@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Transcription Guidelines Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black:       #0a0a0a;
+      --black-card:  #141414;
+      --black-raised:#1c1c1c;
+      --black-border:#2a2a2a;
+      --orange:      #f47920;
+      --orange-lt:   #ff9a45;
+      --orange-dk:   #d4620f;
+      --orange-glow: rgba(244,121,32,0.18);
+      --white:       #ffffff;
+      --grey-lt:     #f0f0f0;
+      --grey-mid:    #888888;
+      --grey-dark:   #555555;
+      --success:     #22c55e;
+      --success-bg:  rgba(34,197,94,0.08);
+      --error:       #ef4444;
+      --error-bg:    rgba(239,68,68,0.08);
+      --radius:      10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--black-card);
+      border-bottom: 1px solid var(--black-border);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-right: 20px;
+      border-right: 1px solid var(--black-border);
+    }
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--orange);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .brand-icon svg { display: block; }
+    .brand-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-bytedance {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 20px;
+    }
+    .brand-bytedance .brand-icon {
+      background: #fff;
+      border-radius: 6px;
+    }
+    .brand-bytedance .brand-name {
+      color: var(--grey-mid);
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+    }
+
+    /* ── PAGE ── */
+    .page-wrapper {
+      max-width: 660px;
+      margin: 48px auto 80px;
+      padding: 0 20px;
+    }
+
+    /* ── HERO BAND ── */
+    .hero-band {
+      background: var(--orange);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 32px 40px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-band::after {
+      content: '';
+      position: absolute;
+      right: -30px; top: -30px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+    .hero-band::before {
+      content: '';
+      position: absolute;
+      right: 40px; bottom: -50px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.08);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+    .hero-band h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .hero-meta {
+      margin-top: 12px;
+      display: flex;
+      gap: 18px;
+    }
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.45);
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--black-card);
+      border-radius: 0 0 var(--radius) var(--radius);
+      border: 1px solid var(--black-border);
+      border-top: none;
+      padding: 36px 40px;
+    }
+
+    /* ── WARNING BOX ── */
+    .warning-box {
+      background: rgba(244,121,32,0.07);
+      border: 1px solid rgba(244,121,32,0.25);
+      border-left: 3px solid var(--orange);
+      border-radius: 7px;
+      padding: 15px 18px;
+      font-size: 13.5px;
+      color: #c8c8c8;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .warning-box strong {
+      color: var(--orange-lt);
+    }
+
+    /* ── FIELD ── */
+    .field-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 8px;
+    }
+    .input-wrap { position: relative; }
+    .input-wrap svg {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      background: var(--black-raised);
+      border: 1.5px solid var(--black-border);
+      border-radius: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input[type="email"]::placeholder { color: var(--grey-dark); }
+    input[type="email"]:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--orange);
+      color: var(--black);
+      border: none;
+      padding: 12px 22px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+      box-shadow: 0 0 20px rgba(244,121,32,0.3);
+    }
+    .btn:hover {
+      background: var(--orange-lt);
+      transform: translateY(-1px);
+      box-shadow: 0 0 28px rgba(244,121,32,0.45);
+    }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled {
+      background: var(--black-raised);
+      color: var(--grey-dark);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .start-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    #loadingMessage { font-size: 13px; font-weight: 500; }
+
+    /* ── QUIZ ── */
+    #quiz { display: none; }
+
+    .progress-wrap {
+      margin-bottom: 28px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      margin-bottom: 7px;
+    }
+    .progress-track {
+      background: var(--black-raised);
+      border-radius: 99px;
+      height: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--orange);
+      border-radius: 99px;
+      box-shadow: 0 0 8px rgba(244,121,32,0.6);
+      transition: width 0.6s cubic-bezier(.4,0,.2,1);
+      width: 0%;
+    }
+
+    /* ── QUESTION ── */
+    .question { display: none; }
+    .question.active { display: block; animation: fadeSlide 0.3s ease; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .q-badge {
+      flex-shrink: 0;
+      background: var(--orange);
+      color: var(--black);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .q-text {
+      font-size: 15.5px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: #e0e0e0;
+    }
+
+    /* ── OPTIONS ── */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 15px;
+      background: var(--black-raised);
+      border: 1.5px solid var(--black-border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14.5px;
+      color: #FFFFFF;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+    .option:hover {
+      border-color: var(--orange);
+      background: rgba(244,121,32,0.06);
+      color: var(--white);
+    }
+    .option input[type="radio"] {
+      margin-top: 2px;
+      accent-color: var(--orange);
+      flex-shrink: 0;
+    }
+    .option input[type="radio"]:disabled ~ span { color: var(--grey-dark); }
+
+    
+.lock-note {
+  font-size: 14px;              /* slightly bigger */
+  font-weight: 600;             /* stronger text */
+  color: #facc15;               /* nice bright yellow */
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+    }
+
+    /* ── FEEDBACK ── */
+    .feedback {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 7px;
+      display: none;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .feedback.correct {
+      display: block;
+      background: var(--success-bg);
+      border-left: 3px solid var(--success);
+      color: #86efac;
+    }
+    .feedback.incorrect {
+      display: block;
+      background: var(--error-bg);
+      border-left: 3px solid var(--error);
+      color: #fca5a5;
+    }
+    .justification {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--grey-mid);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 8px;
+    }
+
+    /* ── STATUS ── */
+    .global-status {
+      margin-top: 24px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 14px;
+      padding: 14px;
+      border-radius: 8px;
+    }
+    .global-status.submitting { background: rgba(244,121,32,0.08); color: var(--orange); }
+    .global-status.done       { background: var(--success-bg); color: var(--success); }
+    .global-status.err        { background: var(--error-bg);   color: var(--error); }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon">
+        <!-- Simple lion mark -->
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2L13 13H3L8 2Z" fill="#0a0a0a"/>
+          <circle cx="8" cy="7" r="2" fill="#0a0a0a" opacity="0.5"/>
+        </svg>
+      </div>
+      <span class="brand-name">Lionbridge</span>
+    </div>
+
+    <div class="brand-bytedance">
+      <div class="brand-icon">
+        <!-- ByteDance style double-note mark -->
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="3" y="3" width="4" height="9" rx="1" fill="#0a0a0a"/>
+          <rect x="9" y="5" width="4" height="7" rx="1" fill="#0a0a0a"/>
+          <circle cx="5" cy="13" r="2" fill="#0a0a0a"/>
+          <circle cx="11" cy="13" r="2" fill="#0a0a0a"/>
+        </svg>
+      </div>
+      <span class="brand-name">ByteDance</span>
+    </div>
+
+    <div class="topbar-right">Assessment Portal</div>
+  </div>
+
+  <!-- PAGE -->
+  <div class="page-wrapper">
+
+    <!-- LANDING -->
+    <div id="startScreen">
+      <div class="hero-band">
+        <div class="hero-eyebrow">Knowledge Assessment</div>
+        <h1>Audio Transcription<br>Guidelines Quiz</h1>
+        <div class="hero-meta">
+          <span>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="rgba(0,0,0,0.4)" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            ~5 minutes
+          </span>
+          <span>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="rgba(0,0,0,0.4)" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            2 questions
+          </span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="warning-box">
+          ⚠️ <strong>Important:</strong> Once you enter your email and begin, your attempt will be recorded immediately. Selecting <strong>"Check Answer"</strong> permanently locks your response for that question — so review carefully before confirming. Only your first completed attempt per email address will be counted. Avoid refreshing the page mid-quiz, as this may affect your results. You're welcome to refer to the guidelines at any time. Best of luck!
+        </div>
+
+        <label class="field-label" for="participantEmail">Lionbridge Email Address</label>
+        <div class="input-wrap">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#555" stroke-width="1.4"/><path d="M1.5 4.5L8 9L14.5 4.5" stroke="#555" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <input type="email" id="participantEmail" placeholder="your@email.com" />
+        </div>
+
+        <div class="start-actions">
+          <button class="btn" type="button" onclick="startQuiz()">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 3.5L12.5 8L5 12.5V3.5Z" fill="#0a0a0a"/></svg>
+            Begin Quiz
+          </button>
+          <div id="loadingMessage"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <main id="quiz">
+      <div class="hero-band">
+        <div class="hero-eyebrow">In Progress</div>
+        <h1>Audio Transcription<br>Guidelines Quiz</h1>
+      </div>
+
+      <div class="card">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span>Progress</span>
+            <span id="progressLabel">0 / 2</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- Q1 -->
+        <section class="question active" id="question1">
+          <div class="q-header">
+            <div class="q-badge">Q1 / 2</div>
+            <div class="q-text">If Audio has: 5 seconds of silence → speaker says clearly: "I want to return my order." What should you do?</div>
+          </div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q1" value="A"><span>A.&nbsp;&nbsp;Discard</span></label>
+            <label class="option"><input type="radio" name="q1" value="B"><span>B.&nbsp;&nbsp;Keep entire audio</span></label>
+            <label class="option"><input type="radio" name="q1" value="C"><span>C.&nbsp;&nbsp;Cut silence, keep speech</span></label>
+            <label class="option"><input type="radio" name="q1" value="D"><span>D.&nbsp;&nbsp;Guess missing speech</span></label>
+          </div>
+          <div class="lock-note">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="4" y="7" width="8" height="7" rx="1" stroke="#555" stroke-width="1.4"/><path d="M5.5 7V5.5a2.5 2.5 0 015 0V7" stroke="#555" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Checking your answer permanently locks this question.
+          </div>
+          <button class="btn" onclick="checkQuestion('q1', 1)">Check Answer</button>
+          <div class="feedback" id="feedback-q1"></div>
+        </section>
+
+        <!-- Q2 -->
+        <section class="question" id="question2">
+          <div class="q-header">
+            <div class="q-badge">Q2 / 2</div>
+            <div class="q-text">Audio: Soft background music is already playing as the speaker says: "Can you help me reset my password?"</div>
+          </div>
+          <div class="options">
+            <label class="option"><input type="radio" name="q2" value="A"><span>A.&nbsp;&nbsp;Discard</span></label>
+            <label class="option"><input type="radio" name="q2" value="B"><span>B.&nbsp;&nbsp;Transcribe everything including music</span></label>
+            <label class="option"><input type="radio" name="q2" value="C"><span>C.&nbsp;&nbsp;Cut music, keep speech</span></label>
+            <label class="option"><input type="radio" name="q2" value="D"><span>D.&nbsp;&nbsp;Guess unclear parts</span></label>
+          </div>
+          <div class="lock-note">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="4" y="7" width="8" height="7" rx="1" stroke="#555" stroke-width="1.4"/><path d="M5.5 7V5.5a2.5 2.5 0 015 0V7" stroke="#555" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Checking your answer permanently locks this question.
+          </div>
+          <button class="btn" onclick="checkQuestion('q2', 2)">Check Answer</button>
+          <div class="feedback" id="feedback-q2"></div>
+        </section>
+
+        <div id="globalStatus" class="global-status"></div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxAVMMVWIeIERUHncTmx6D85F-PwRniLAnpqnb_dfo8e3s1nAy9b7fa8HruQScgJ5fa/exec";
+  const correctAnswers = { q1: "C", q2: "C" };
+  const justifications = {
+    q1: "Long pauses (≥3 seconds): Retain only the longest and most semantically complete segment.",
+    q2: "Transcribe clear speech even with soft background music."
+  };
+
+  let participantEmail = "";
+  const userAnswers = {};
+
+  function setProgress(n) {
+    document.getElementById("progressFill").style.width = (n / 2 * 100) + "%";
+    document.getElementById("progressLabel").textContent = n + " / 2";
+  }
+
+  async function startQuiz() {
+    participantEmail = document.getElementById("participantEmail").value.trim();
+    const loading = document.getElementById("loadingMessage");
+    if (!participantEmail) { alert("Please enter your Lionbridge email."); return; }
+    loading.textContent = "Loading… please wait.";
+    loading.style.color = "#f47920";
+    try {
+      await fetch(WEB_APP_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"},
+        body: JSON.stringify({ action:"start_attempt", timestamp: new Date().toISOString(), email: participantEmail }) });
+    } catch(e) {
+      loading.textContent = "There was an issue loading the quiz.";
+      loading.style.color = "#ef4444";
+      return;
+    }
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    setProgress(0);
+  }
+
+  document.getElementById("quiz").style.display = "none";
+
+  function checkQuestion(qid, n) {
+    const sel = document.querySelector('input[name="' + qid + '"]:checked');
+    if (!sel) { alert("Please select an answer."); return; }
+    userAnswers[qid] = sel.value;
+    const isCorrect = sel.value === correctAnswers[qid];
+    document.querySelectorAll('input[name="' + qid + '"]').forEach(r => r.disabled = true);
+    document.querySelector('#question' + n + ' .btn').disabled = true;
+    const fb = document.getElementById("feedback-" + qid);
+    fb.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    fb.innerHTML = "<strong>" + (isCorrect ? "✓ Correct!" : "✗ Incorrect.") + "</strong>"
+      + '<div class="justification">' + justifications[qid] + "</div>";
+    if (n === 1) {
+      setProgress(1);
+      setTimeout(() => {
+        document.getElementById("question1").classList.remove("active");
+        document.getElementById("question2").classList.add("active");
+      }, 1300);
+    } else {
+      setProgress(2);
+      finishQuiz();
+    }
+  }
+
+  async function finishQuiz() {
+    let score = 0;
+    for (const q in correctAnswers) { if (userAnswers[q] === correctAnswers[q]) score++; }
+    const status = document.getElementById("globalStatus");
+    status.textContent = "Submitting your quiz… please do not refresh.";
+    status.className = "global-status submitting";
+    try {
+      await fetch(WEB_APP_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"},
+        body: JSON.stringify({ action:"complete_attempt", completedAt: new Date().toISOString(),
+          email: participantEmail, q1: userAnswers.q1||"", q2: userAnswers.q2||"", score: score+"/2" }) });
+      setTimeout(() => {
+        window.removeEventListener("beforeunload", beforeUnloadHandler);
+        status.textContent = "✓ Quiz submitted successfully. Final Score: " + score + "/2";
+        status.className = "global-status done";
+      }, 1000);
+    } catch(e) {
+      status.textContent = "There was an error submitting the quiz.";
+      status.className = "global-status err";
+    }
+  }
+
+  function beforeUnloadHandler(e) { e.preventDefault(); e.returnValue = "Your quiz attempt is still in progress."; }
+  window.addEventListener("beforeunload", beforeUnloadHandler);
+  </script>
+</body>
+</html>
