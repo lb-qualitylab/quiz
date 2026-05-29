@@ -7,8 +7,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Playfair Display for titles · DM Sans for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -16,30 +16,20 @@
       --black-card: #141414;
       --black-raised: #1c1c1c;
       --black-border: #2a2a2a;
-
       --orange: #f47920;
       --orange-lt: #ff9a45;
-
       --white: #ffffff;
-
       --grey-page: #3a3a3a;
       --grey-mid: #9a9a9a;
       --grey-dark: #666666;
-
       --success: #22c55e;
       --success-bg: rgba(34,197,94,0.08);
-
       --error: #ef4444;
       --error-bg: rgba(239,68,68,0.08);
-
       --radius: 10px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -48,16 +38,13 @@
       min-height: 100vh;
     }
 
-    /* TOPBAR */
-
+    /* ── TOPBAR ── */
     .topbar {
       height: 56px;
       background: var(--black-card);
       border-bottom: 1px solid var(--black-border);
-
       display: flex;
       align-items: center;
-
       padding: 0 32px;
     }
 
@@ -69,7 +56,7 @@
 
     .brand-name {
       color: var(--orange);
-      font-family: 'Syne', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 700;
     }
@@ -82,67 +69,65 @@
 
     .topbar-right {
       margin-left: auto;
-
       color: var(--white);
-
-      font-family: 'Syne', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    /* PAGE */
-
+    /* ── PAGE ── */
     .page-wrapper {
       max-width: 680px;
       margin: 48px auto 80px;
       padding: 0 20px;
     }
 
-    /* HERO */
-
+    /* ── HERO ── */
     .hero-band {
       background: var(--orange);
       border-radius: var(--radius) var(--radius) 0 0;
-
       padding: 32px 40px;
       position: relative;
       overflow: hidden;
     }
 
+    /* waveform SVG sits in the right half, translucent */
     .hero-waveform {
       position: absolute;
       right: 0;
       top: 0;
-      width: 260px;
+      width: 55%;
       height: 100%;
       opacity: 0.12;
       pointer-events: none;
     }
 
     .hero-eyebrow {
+      position: relative; /* above SVG */
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: rgba(0,0,0,0.65);
-
       margin-bottom: 10px;
     }
 
+    /* ── TITLE FONT: Playfair Display ── */
     .hero-band h1 {
-      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: 30px;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.25;
       color: var(--black);
-
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     .hero-meta {
+      position: relative;
       margin-top: 14px;
-
       display: flex;
       gap: 18px;
     }
@@ -151,69 +136,47 @@
       display: flex;
       align-items: center;
       gap: 5px;
-
       font-size: 12px;
       font-weight: 700;
-
       color: rgba(0,0,0,0.6);
     }
 
-    /* CARD */
-
+    /* ── CARD ── */
     .card {
       background: var(--black-card);
-
       border: 1px solid var(--black-border);
       border-top: none;
-
       border-radius: 0 0 var(--radius) var(--radius);
-
       padding: 36px 40px;
     }
 
-    /* WARNING */
-
+    /* ── WARNING ── */
     .warning-box {
       background: rgba(244,121,32,0.08);
-
       border: 1px solid rgba(244,121,32,0.25);
       border-left: 4px solid var(--orange);
-
       border-radius: 8px;
-
       padding: 18px;
-
       line-height: 1.7;
-
       font-size: 14px;
       color: #d0d0d0;
-
       margin-bottom: 28px;
     }
 
-    .warning-box strong {
-      color: var(--orange-lt);
-    }
+    .warning-box strong { color: var(--orange-lt); }
 
-    /* INPUT */
-
+    /* ── INPUT ── */
     .field-label {
       display: block;
-
       font-size: 11px;
       font-weight: 700;
-
       text-transform: uppercase;
       letter-spacing: 0.1em;
-
       color: #d0d0d0;
-
       margin-bottom: 8px;
     }
 
-    .input-wrap {
-      position: relative;
-    }
+    .input-wrap { position: relative; }
 
     .input-wrap svg {
       position: absolute;
@@ -224,108 +187,82 @@
 
     input[type="email"] {
       width: 100%;
-
       padding: 12px 14px 12px 40px;
-
       background: var(--black-raised);
-
       border: 1.5px solid var(--black-border);
       border-radius: 8px;
-
       color: white;
-
       font-size: 15px;
       font-family: 'DM Sans', sans-serif;
-
       outline: none;
     }
 
-    input[type="email"]:focus {
-      border-color: var(--orange);
-    }
+    input[type="email"]:focus { border-color: var(--orange); }
 
-    /* BUTTON */
-
+    /* ── BUTTON ── */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-
       background: var(--orange);
       color: var(--black);
-
       border: none;
       border-radius: 8px;
-
       padding: 12px 22px;
-
       cursor: pointer;
-
-      font-family: 'Syne', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 13px;
       font-weight: 700;
-
       transition: 0.15s;
     }
 
-    .btn:hover {
-      background: var(--orange-lt);
-      transform: translateY(-1px);
+    .btn:hover { background: var(--orange-lt); transform: translateY(-1px); }
+
+    .btn:disabled {
+      background: var(--black-raised);
+      color: var(--grey-dark);
+      cursor: not-allowed;
+      transform: none;
     }
 
     .btn-next {
       display: none;
-
       margin-top: 14px;
-
       background: transparent;
       color: var(--orange);
-
       border: 1.5px solid var(--orange);
     }
 
-    .btn-next.visible {
-      display: inline-flex;
-    }
+    .btn-next:hover { background: rgba(244,121,32,0.08); transform: translateY(-1px); }
+
+    .btn-next.visible { display: inline-flex; }
 
     .start-actions {
       margin-top: 22px;
-
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    /* QUIZ */
+    /* ── QUIZ ── */
+    #quiz { display: none; }
 
-    #quiz {
-      display: none;
-    }
-
-    .progress-wrap {
-      margin-bottom: 28px;
-    }
+    .progress-wrap { margin-bottom: 28px; }
 
     .progress-label {
       display: flex;
       justify-content: space-between;
-
       margin-bottom: 7px;
-
       font-size: 11px;
       font-weight: 700;
-
       text-transform: uppercase;
       letter-spacing: 0.06em;
-
       color: var(--grey-mid);
     }
 
     .progress-track {
       height: 4px;
-
       background: var(--black-raised);
-
       border-radius: 99px;
       overflow: hidden;
     }
@@ -333,43 +270,36 @@
     .progress-fill {
       height: 100%;
       width: 0%;
-
       background: var(--orange);
-
       transition: width 0.5s ease;
     }
 
-    /* QUESTIONS */
+    /* ── QUESTIONS ── */
+    .question { display: none; }
+    .question.active { display: block; animation: fadeUp 0.3s ease; }
 
-    .question {
-      display: none;
-    }
-
-    .question.active {
-      display: block;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .q-header {
       display: flex;
       gap: 14px;
-
       margin-bottom: 22px;
     }
 
     .q-badge {
       background: var(--orange);
       color: var(--black);
-
       border-radius: 6px;
-
       padding: 5px 10px;
-
       font-size: 12px;
       font-weight: 700;
-
       font-family: 'DM Sans', sans-serif;
-
       white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
     }
 
     .q-text {
@@ -378,13 +308,11 @@
       color: #e5e5e5;
     }
 
-    /* OPTIONS */
-
+    /* ── OPTIONS ── */
     .options {
       display: flex;
       flex-direction: column;
       gap: 10px;
-
       margin-bottom: 18px;
     }
 
@@ -392,173 +320,118 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
-
       padding: 14px 16px;
-
       border-radius: 8px;
-
       background: var(--black-raised);
-
       border: 1.5px solid var(--black-border);
-
       cursor: pointer;
-
       transition: 0.15s;
-
       color: white;
     }
 
-    .option:hover {
-      border-color: var(--orange);
-    }
+    .option:hover { border-color: var(--orange); }
+
+    .option input[type="radio"] { accent-color: var(--orange); flex-shrink: 0; margin-top: 2px; }
 
     .lock-note {
       display: flex;
       align-items: center;
       gap: 6px;
-
       margin-bottom: 14px;
-
       color: #facc15;
-
       font-size: 14px;
       font-weight: 600;
     }
 
-    /* FEEDBACK */
-
+    /* ── FEEDBACK ── */
     .feedback {
       display: none;
-
       margin-top: 18px;
-
       padding: 14px 16px;
-
       border-radius: 8px;
-
       line-height: 1.65;
     }
 
     .feedback.correct {
       display: block;
-
       background: var(--success-bg);
-
       border-left: 4px solid var(--success);
-
       color: #86efac;
     }
 
     .feedback.incorrect {
       display: block;
-
       background: var(--error-bg);
-
       border-left: 4px solid var(--error);
-
       color: #fca5a5;
     }
 
     .justification {
       margin-top: 8px;
-
       padding-top: 8px;
-
       border-top: 1px solid rgba(255,255,255,0.06);
-
       color: var(--grey-mid);
-
       font-size: 13px;
     }
 
-    /* STATUS */
-
+    /* ── STATUS ── */
     .global-status {
       margin-top: 24px;
-
       padding: 14px;
-
       border-radius: 8px;
-
       text-align: center;
-
       font-size: 14px;
       font-weight: 700;
     }
 
-    .global-status.submitting {
-      background: rgba(244,121,32,0.08);
-      color: var(--orange);
-    }
-
-    .global-status.done {
-      background: var(--success-bg);
-      color: var(--success);
-    }
-
-    .global-status.err {
-      background: var(--error-bg);
-      color: var(--error);
-    }
-
+    .global-status.submitting { background: rgba(244,121,32,0.08); color: var(--orange); }
+    .global-status.done       { background: var(--success-bg); color: var(--success); }
+    .global-status.err        { background: var(--error-bg); color: var(--error); }
   </style>
 </head>
 
 <body>
 
   <div class="topbar">
-
     <div class="brand">
       <span class="brand-name">Lionbridge</span>
-
       <div class="divider"></div>
-
       <span class="brand-name">ByteDance</span>
     </div>
-
-    <div class="topbar-right">
-      Assessment Portal
-    </div>
-
+    <div class="topbar-right">Assessment Portal</div>
   </div>
 
   <div class="page-wrapper">
 
     <!-- START SCREEN -->
-
     <div id="startScreen">
 
       <div class="hero-band">
 
-        <svg class="hero-waveform" viewBox="0 0 260 90" xmlns="http://www.w3.org/2000/svg">
+        <!-- Waveform accent -->
+        <svg class="hero-waveform" viewBox="0 0 260 90" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <polyline
-            points="0,45 8,45 12,20 16,70 20,30 24,62 28,38 32,55 36,28 40,65 44,35 48,58 52,22 56,68 60,40 64,72 68,18 72,60 76,32 80,50 84,25 88,64 92,38 96,55 100,28 104,68 108,42 112,72 116,15 120,58 124,36 128,62 132,30 136,70 140,25 144,55 148,38 152,65 156,22 160,60 164,40 168,68 172,28 176,52 180,35 184,62 188,20 192,58 196,44 200,70 204,30 208,52 212,38 216,58 220,28 224,50 228,40 232,60 236,35 240,55 244,42 248,50 252,45 260,45"
+            points="0,45 6,45 10,32 14,58 18,24 22,66 26,36 30,60 34,28 38,68 42,30 46,62 50,20 54,70 58,38 62,64 66,16 70,62 74,34 78,52 82,22 86,66 90,36 94,56 98,26 102,70 106,40 110,68 114,14 118,60 122,32 126,64 130,28 134,72 138,22 142,58 146,36 150,66 154,20 158,62 162,38 166,70 170,26 174,54 178,32 182,64 186,18 190,60 194,42 198,68 202,28 206,54 210,36 214,60 218,26 222,52 226,38 230,62 234,32 238,56 242,40 246,52 250,44 256,45 260,45"
             fill="none"
             stroke="black"
             stroke-width="3"
             stroke-linecap="round"
+            stroke-linejoin="round"
           />
         </svg>
 
-        <div class="hero-eyebrow">
-          Knowledge Assessment
-        </div>
-
-        <h1>
-          ASR Audio Labeling<br>
-          Guidelines Quiz
-        </h1>
+        <div class="hero-eyebrow">Knowledge Assessment</div>
+        <h1>ASR Audio Labeling<br>Guidelines Quiz</h1>
 
         <div class="hero-meta">
-
           <span>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="rgba(0,0,0,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg>
             ~5 minutes
           </span>
-
           <span>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="rgba(0,0,0,0.55)" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="rgba(0,0,0,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg>
             2 questions
           </span>
-
         </div>
 
       </div>
@@ -572,185 +445,107 @@
           Only your first completed attempt per email address will be counted.
         </div>
 
-        <label class="field-label">
-          Lionbridge Email Address
-        </label>
+        <label class="field-label">Lionbridge Email Address</label>
 
         <div class="input-wrap">
-
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#888" stroke-width="1.4"/>
             <path d="M1.5 4.5L8 9L14.5 4.5" stroke="#888" stroke-width="1.4"/>
           </svg>
-
-          <input
-            type="email"
-            id="participantEmail"
-            placeholder="your@email.com"
-          />
-
+          <input type="email" id="participantEmail" placeholder="your@email.com" />
         </div>
 
         <div class="start-actions">
-
-          <button class="btn" onclick="startQuiz()">
-            Begin Quiz
-          </button>
-
+          <button class="btn" onclick="startQuiz()">Begin Quiz</button>
           <div id="loadingMessage"></div>
-
         </div>
 
       </div>
-
     </div>
 
     <!-- QUIZ -->
-
     <main id="quiz">
 
       <div class="hero-band">
 
-        <div class="hero-eyebrow">
-          In Progress
-        </div>
+        <!-- Waveform accent (quiz screen) -->
+        <svg class="hero-waveform" viewBox="0 0 260 90" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <polyline
+            points="0,45 6,45 10,32 14,58 18,24 22,66 26,36 30,60 34,28 38,68 42,30 46,62 50,20 54,70 58,38 62,64 66,16 70,62 74,34 78,52 82,22 86,66 90,36 94,56 98,26 102,70 106,40 110,68 114,14 118,60 122,32 126,64 130,28 134,72 138,22 142,58 146,36 150,66 154,20 158,62 162,38 166,70 170,26 174,54 178,32 182,64 186,18 190,60 194,42 198,68 202,28 206,54 210,36 214,60 218,26 222,52 226,38 230,62 234,32 238,56 242,40 246,52 250,44 256,45 260,45"
+            fill="none"
+            stroke="black"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
 
-        <h1>
-          ASR Audio Labeling<br>
-          Guidelines Quiz
-        </h1>
+        <div class="hero-eyebrow">In Progress</div>
+        <h1>ASR Audio Labeling<br>Guidelines Quiz</h1>
 
       </div>
 
       <div class="card">
 
         <div class="progress-wrap">
-
           <div class="progress-label">
-
             <span>Progress</span>
-
-            <span id="progressLabel">
-              0 / 2
-            </span>
-
+            <span id="progressLabel">0 / 2</span>
           </div>
-
           <div class="progress-track">
             <div class="progress-fill" id="progressFill"></div>
           </div>
-
         </div>
 
         <!-- QUESTION 1 -->
-
         <section class="question active" id="question1">
 
           <div class="q-header">
-
-            <div class="q-badge">
-              Q1 / 2
-            </div>
-
+            <div class="q-badge">Q1 / 2</div>
             <div class="q-text">
               If Audio has: 5 seconds of silence → speaker says clearly:
               "I want to return my order." What should you do?
             </div>
-
           </div>
 
           <div class="options">
-
-            <label class="option">
-              <input type="radio" name="q1" value="A">
-              <span>A. Discard</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q1" value="B">
-              <span>B. Keep entire audio</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q1" value="C">
-              <span>C. Cut silence, keep speech</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q1" value="D">
-              <span>D. Guess missing speech</span>
-            </label>
-
+            <label class="option"><input type="radio" name="q1" value="A"><span>A. Discard</span></label>
+            <label class="option"><input type="radio" name="q1" value="B"><span>B. Keep entire audio</span></label>
+            <label class="option"><input type="radio" name="q1" value="C"><span>C. Cut silence, keep speech</span></label>
+            <label class="option"><input type="radio" name="q1" value="D"><span>D. Guess missing speech</span></label>
           </div>
 
-          <div class="lock-note">
-            Checking your answer permanently locks this question.
-          </div>
+          <div class="lock-note">⚠ Checking your answer permanently locks this question.</div>
 
-          <button class="btn" id="checkBtn1" onclick="checkQuestion('q1',1)">
-            Check Answer
-          </button>
-
-          <button class="btn btn-next" id="nextBtn1" onclick="goToQuestion(2)">
-            Next Question
-          </button>
+          <button class="btn" id="checkBtn1" onclick="checkQuestion('q1',1)">Check Answer</button>
+          <button class="btn btn-next" id="nextBtn1" onclick="goToQuestion(2)">Next Question →</button>
 
           <div class="feedback" id="feedback-q1"></div>
 
         </section>
 
         <!-- QUESTION 2 -->
-
         <section class="question" id="question2">
 
           <div class="q-header">
-
-            <div class="q-badge">
-              Q2 / 2
-            </div>
-
+            <div class="q-badge">Q2 / 2</div>
             <div class="q-text">
               Audio: Soft background music is already playing as the speaker says:
               "Can you help me reset my password?"
             </div>
-
           </div>
 
           <div class="options">
-
-            <label class="option">
-              <input type="radio" name="q2" value="A">
-              <span>A. Discard</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q2" value="B">
-              <span>B. Transcribe everything including music</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q2" value="C">
-              <span>C. Cut music, keep speech</span>
-            </label>
-
-            <label class="option">
-              <input type="radio" name="q2" value="D">
-              <span>D. Guess unclear parts</span>
-            </label>
-
+            <label class="option"><input type="radio" name="q2" value="A"><span>A. Discard</span></label>
+            <label class="option"><input type="radio" name="q2" value="B"><span>B. Transcribe everything including music</span></label>
+            <label class="option"><input type="radio" name="q2" value="C"><span>C. Cut music, keep speech</span></label>
+            <label class="option"><input type="radio" name="q2" value="D"><span>D. Guess unclear parts</span></label>
           </div>
 
-          <div class="lock-note">
-            Checking your answer permanently locks this question.
-          </div>
+          <div class="lock-note">⚠ Checking your answer permanently locks this question.</div>
 
-          <button class="btn" id="checkBtn2" onclick="checkQuestion('q2',2)">
-            Check Answer
-          </button>
-
-          <button class="btn btn-next" id="nextBtn2" onclick="finishQuiz()">
-            Finish & Submit
-          </button>
+          <button class="btn" id="checkBtn2" onclick="checkQuestion('q2',2)">Check Answer</button>
+          <button class="btn btn-next" id="nextBtn2" onclick="finishQuiz()">Finish &amp; Submit →</button>
 
           <div class="feedback" id="feedback-q2"></div>
 
@@ -759,255 +554,114 @@
         <div id="globalStatus" class="global-status"></div>
 
       </div>
-
     </main>
 
   </div>
 
-<script>
+  <script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxAVMMVWIeIERUHncTmx6D85F-PwRniLAnpqnb_dfo8e3s1nAy9b7fa8HruQScgJ5fa/exec";
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxAVMMVWIeIERUHncTmx6D85F-PwRniLAnpqnb_dfo8e3s1nAy9b7fa8HruQScgJ5fa/exec";
+  const correctAnswers = { q1: "C", q2: "C" };
 
-const correctAnswers = {
-  q1: "C",
-  q2: "C"
-};
+  const justifications = {
+    q1: "Long pauses (≥3 seconds): Retain only the longest and most semantically complete segment.",
+    q2: "Transcribe clear speech even with soft background music."
+  };
 
-const justifications = {
-  q1: "Long pauses (≥3 seconds): Retain only the longest and most semantically complete segment.",
-  q2: "Transcribe clear speech even with soft background music."
-};
+  let participantEmail = "";
+  const userAnswers = {};
 
-let participantEmail = "";
-
-const userAnswers = {};
-
-function setProgress(n) {
-
-  document.getElementById("progressFill").style.width =
-    ((n / 2) * 100) + "%";
-
-  document.getElementById("progressLabel").textContent =
-    n + " / 2";
-}
-
-async function startQuiz() {
-
-  participantEmail =
-    document.getElementById("participantEmail").value.trim();
-
-  const loading =
-    document.getElementById("loadingMessage");
-
-  if (!participantEmail) {
-
-    alert("Please enter your Lionbridge email.");
-
-    return;
+  function setProgress(n) {
+    document.getElementById("progressFill").style.width = ((n / 2) * 100) + "%";
+    document.getElementById("progressLabel").textContent = n + " / 2";
   }
 
-  loading.textContent = "Loading… please wait.";
-  loading.style.color = "#f47920";
-
-  try {
-
-    const response = await fetch(WEB_APP_URL, {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "text/plain"
-      },
-
-      body: JSON.stringify({
-        action: "start_attempt",
-        timestamp: new Date().toISOString(),
-        email: participantEmail
-      })
-
-    });
-
-    const text = await response.text();
-const result = JSON.parse(text);
-
-    // DUPLICATE EMAIL
-
-    if (result.status === "duplicate") {
-
-      loading.textContent =
-        "This email has already completed the quiz.";
-
+  async function startQuiz() {
+    participantEmail = document.getElementById("participantEmail").value.trim();
+    const loading = document.getElementById("loadingMessage");
+    if (!participantEmail) { alert("Please enter your Lionbridge email."); return; }
+    loading.textContent = "Loading… please wait.";
+    loading.style.color = "#f47920";
+    try {
+      const response = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({ action: "start_attempt", timestamp: new Date().toISOString(), email: participantEmail })
+      });
+      const text = await response.text();
+      const result = JSON.parse(text);
+      if (result.status === "duplicate") {
+        loading.textContent = "This email has already completed the quiz.";
+        loading.style.color = "#ef4444";
+        return;
+      }
+      if (result.status === "success") {
+        document.getElementById("startScreen").style.display = "none";
+        document.getElementById("quiz").style.display = "block";
+        setProgress(0);
+        return;
+      }
+      loading.textContent = "Unable to start quiz.";
       loading.style.color = "#ef4444";
-
-      return;
-    }
-
-    // SUCCESS
-
-    if (result.status === "success") {
-
-      document.getElementById("startScreen").style.display =
-        "none";
-
-      document.getElementById("quiz").style.display =
-        "block";
-
-      setProgress(0);
-
-      return;
-    }
-
-    loading.textContent = "Unable to start quiz.";
-    loading.style.color = "#ef4444";
-
-  } catch (e) {
-
-    console.error(e);
-
-    loading.textContent =
-      "There was an issue loading the quiz.";
-
-    loading.style.color = "#ef4444";
-  }
-}
-
-function checkQuestion(qid, n) {
-
-  const sel =
-    document.querySelector('input[name="' + qid + '"]:checked');
-
-  if (!sel) {
-
-    alert("Please select an answer.");
-
-    return;
-  }
-
-  userAnswers[qid] = sel.value;
-
-  const isCorrect =
-    sel.value === correctAnswers[qid];
-
-  document.querySelectorAll('input[name="' + qid + '"]')
-    .forEach(r => r.disabled = true);
-
-  document.getElementById("checkBtn" + n).disabled = true;
-
-  const fb =
-    document.getElementById("feedback-" + qid);
-
-  fb.className =
-    "feedback " + (isCorrect ? "correct" : "incorrect");
-
-  fb.innerHTML =
-    "<strong>" +
-    (isCorrect ? "✓ Correct!" : "✗ Incorrect.") +
-    "</strong>" +
-    '<div class="justification">' +
-    justifications[qid] +
-    "</div>";
-
-  setProgress(n);
-
-  document.getElementById("nextBtn" + n)
-    .classList.add("visible");
-}
-
-function goToQuestion(n) {
-
-  document.getElementById("question" + (n - 1))
-    .classList.remove("active");
-
-  document.getElementById("question" + n)
-    .classList.add("active");
-}
-
-async function finishQuiz() {
-
-  let score = 0;
-
-  for (const q in correctAnswers) {
-
-    if (userAnswers[q] === correctAnswers[q]) {
-
-      score++;
+    } catch (e) {
+      console.error(e);
+      loading.textContent = "There was an issue loading the quiz.";
+      loading.style.color = "#ef4444";
     }
   }
 
-  document.getElementById("nextBtn2")
-    .classList.remove("visible");
-
-  const status =
-    document.getElementById("globalStatus");
-
-  status.textContent =
-    "Submitting your quiz… please do not refresh.";
-
-  status.className =
-    "global-status submitting";
-
-  try {
-
-    await fetch(WEB_APP_URL, {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "text/plain"
-      },
-
-      body: JSON.stringify({
-        action: "complete_attempt",
-        completedAt: new Date().toISOString(),
-        email: participantEmail,
-        q1: userAnswers.q1 || "",
-        q2: userAnswers.q2 || "",
-        score: score + "/2"
-      })
-
-    });
-
-    setTimeout(() => {
-
-      window.removeEventListener(
-        "beforeunload",
-        beforeUnloadHandler
-      );
-
-      status.textContent =
-        "✓ Quiz submitted successfully. Final Score: " +
-        score +
-        "/2";
-
-      status.className =
-        "global-status done";
-
-    }, 1000);
-
-  } catch (e) {
-
-    status.textContent =
-      "There was an error submitting the quiz.";
-
-    status.className =
-      "global-status err";
+  function checkQuestion(qid, n) {
+    const sel = document.querySelector('input[name="' + qid + '"]:checked');
+    if (!sel) { alert("Please select an answer."); return; }
+    userAnswers[qid] = sel.value;
+    const isCorrect = sel.value === correctAnswers[qid];
+    document.querySelectorAll('input[name="' + qid + '"]').forEach(r => r.disabled = true);
+    document.getElementById("checkBtn" + n).disabled = true;
+    const fb = document.getElementById("feedback-" + qid);
+    fb.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    fb.innerHTML = "<strong>" + (isCorrect ? "✓ Correct!" : "✗ Incorrect.") + "</strong>"
+      + '<div class="justification">' + justifications[qid] + "</div>";
+    setProgress(n);
+    document.getElementById("nextBtn" + n).classList.add("visible");
   }
-}
 
-function beforeUnloadHandler(e) {
+  function goToQuestion(n) {
+    document.getElementById("question" + (n - 1)).classList.remove("active");
+    document.getElementById("question" + n).classList.add("active");
+  }
 
-  e.preventDefault();
+  async function finishQuiz() {
+    let score = 0;
+    for (const q in correctAnswers) { if (userAnswers[q] === correctAnswers[q]) score++; }
+    document.getElementById("nextBtn2").classList.remove("visible");
+    const status = document.getElementById("globalStatus");
+    status.textContent = "Submitting your quiz… please do not refresh.";
+    status.className = "global-status submitting";
+    try {
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({ action: "complete_attempt", completedAt: new Date().toISOString(),
+          email: participantEmail, q1: userAnswers.q1 || "", q2: userAnswers.q2 || "", score: score + "/2" })
+      });
+      setTimeout(() => {
+        window.removeEventListener("beforeunload", beforeUnloadHandler);
+        status.textContent = "✓ Quiz submitted successfully. Final Score: " + score + "/2";
+        status.className = "global-status done";
+      }, 1000);
+    } catch (e) {
+      status.textContent = "There was an error submitting the quiz.";
+      status.className = "global-status err";
+    }
+  }
 
-  e.returnValue =
-    "Your quiz attempt is still in progress.";
-}
+  function beforeUnloadHandler(e) {
+    e.preventDefault();
+    e.returnValue = "Your quiz attempt is still in progress.";
+  }
 
-window.addEventListener(
-  "beforeunload",
-  beforeUnloadHandler
-);
-
-</script>
+  window.addEventListener("beforeunload", beforeUnloadHandler);
+  </script>
 
 </body>
 </html>
