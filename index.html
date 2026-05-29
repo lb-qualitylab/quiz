@@ -565,8 +565,8 @@
   const correctAnswers = { q1: "C", q2: "C" };
 
   const justifications = {
-    q1: "Long pauses (≥3 seconds): Retain only the longest and most semantically complete segment.",
-    q2: "Transcribe clear speech even with soft background music."
+    q1: "Long pauses (≥3 seconds): Retain only the longest and most semantically complete segment. Discard the other part.",
+    q2: "Intercept and transcribe only the CLEAR speaker part when: The speaker's speech overlaps PARTIALLY with a song/music."
   };
 
   let participantEmail = "";
